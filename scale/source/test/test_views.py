@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import json
 
 import django
-from django.test import TestCase
+from django.test import TestCase, TransactionTestCase
 from rest_framework import status
 
 import error.test.utils as error_test_utils
@@ -209,7 +209,7 @@ class TestSourceDetailsView(TestCase):
                 self.assertIn(product['id'], [self.product1.id, self.product2.id])
 
 
-class TestSourceJobsView(TestCase):
+class TestSourceJobsView(TransactionTestCase):
 
     def setUp(self):
         django.setup()
